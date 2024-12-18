@@ -1,0 +1,136 @@
+<!-- ticket_app/create_ticket.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Ticket</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .form-container h2 {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            font-size: 1.1rem;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+
+        .message-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .message-container h2 {
+            color: #28a745;
+        }
+
+        .message-container p {
+            font-size: 1.1rem;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .footer a {
+            color: #f8f9fa;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar Section -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Ticket Management System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Create Ticket</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Create Ticket Form Section -->
+<div class="container form-container">
+    <h2>Create Your Ticket</h2>
+
+    <!-- Display form -->
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-custom">Create Ticket</button>
+    </form>
+</div>
+
+<!-- Success Message Section -->
+{% if ticket_data %}
+    <div class="container message-container">
+        <h2>Ticket Created Successfully!</h2>
+        <p>Your ticket has been created. You can download it using the button below.</p>
+        <a href="{% url 'download_ticket_pdf' %}">
+            <button class="btn-custom">Download Ticket PDF</button>
+        </a>
+    </div>
+{% endif %}
+<div>
+    <h2></h2>
+    <p>&nbsp;</p> <!-- This adds a blank line -->
+    <p></p>
+</div>
+
+
+
+<!-- Include Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .ticket { border: 1px solid #000; padding: 20px; width: 50%; margin: 20px auto; }
+        .header { text-align: center; }
+        .details { margin-top: 20px; }
+        .qr-code { margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="ticket">
+        <div class="header">
+            <h1>Your Ticket</h1>
+        </div>
+        <div class="details">
+            <p><strong>Name:</strong> {{ ticket.name }}</p>
+            <p><strong>Mobile Number:</strong> {{ ticket.mobile_number }}</p>
+            <p><strong>Age:</strong> {{ ticket.age }}</p>
+            <p><strong>Email:</strong> {{ ticket.email }}</p>
+            <p><strong>Ticket Type:</strong> {{ ticket.ticket_type }}</p>
+            <p><strong>Event Details:</strong> {{ ticket.event_details }}</p>
+        </div>
+        <div class="qr-code">
+            <img src="data:image/png;base64,{{ qr_code|safe }}">
+        </div>
+    </div>
+</body>
+</html>

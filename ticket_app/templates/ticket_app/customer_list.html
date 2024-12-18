@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer List</title>
+</head>
+<body>
+    <h1>List of Customers</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Mobile Number</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Number of Tickets</th>
+            <th>Ticket Type</th>
+        </tr>
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.mobile_number }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.age }}</td>
+            <td>{{ customer.number_of_tickets }}</td>
+            <td>{{ customer.ticket_type }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
